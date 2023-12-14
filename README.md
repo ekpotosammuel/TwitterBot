@@ -19,4 +19,14 @@ the logic involves subscribing a user to a bot after a successful authorization 
 4. create channel
 5. add user to chatbot
 6. add a user to the channel
-7. display subscribed user 
+7. display subscribed user
+
+## How to run app locally 
+1. clone app
+2. run composer install
+3. create a database and migrate
+4. run the app locally and start testing the endpoints
+
+## Documentation (POSTMAN)
+
+https://documenter.getpostman.com/view/15914392/2s9Ykkehsm
