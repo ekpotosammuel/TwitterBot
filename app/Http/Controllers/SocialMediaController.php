@@ -29,14 +29,16 @@ class SocialMediaController extends Controller
         $connect = new TwitterOAuth(env('API_KEY'), env('API_SECRET_KEY'), $oauth_token, $oauth_verifier);
         $details = $connect->oauth('oauth/access_token', ['oauth_verifier' => $oauth_verifier]);
         // dd($details);
-
-        $user = User::create(
-            [
-                'twitter_id' => $details['user_id'],
-                'name' => $details['screen_name'],
-            ]
-        );
-        $user->save();
+        $already_exist = User::where("twitter_id", $details['user_id'])->first();
+        if ($already_exist == null) {
+            $user = User::create(
+                [
+                    'twitter_id' => $details['user_id'],
+                    'name' => $details['screen_name'],
+                ]
+            );
+            $user->save();
+        }
         dd($details);
     }
 }
